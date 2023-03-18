@@ -13,7 +13,6 @@ void main() {
       create: (context) => naviprovider(),
       child: CupertinoApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'home',
         routes: {
           '/' : (p0) => navigation(),
           'home' : (p0) => cart_screen(),

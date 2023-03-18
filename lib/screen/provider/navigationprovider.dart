@@ -8,4 +8,11 @@ class naviprovider extends ChangeNotifier
     i = value;
     notifyListeners();
   }
+  DateTime dateTime = DateTime(2023, 19, 3, 10, 10);
+
+  void changedate(DateTime newDate)
+  {
+    dateTime = newDate;
+    notifyListeners();
+  }
 }

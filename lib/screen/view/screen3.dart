@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/navigationprovider.dart';
 
 class cart_screen extends StatefulWidget {
   const cart_screen({Key? key}) : super(key: key);
@@ -9,8 +12,11 @@ class cart_screen extends StatefulWidget {
 }
 
 class _cart_screenState extends State<cart_screen> {
+  naviprovider? Picprovider;
+
   @override
   Widget build(BuildContext context) {
+    Picprovider = Provider.of<naviprovider>(context, listen: true);
     return SafeArea(
       child: CupertinoPageScaffold(
         child: Padding(
@@ -25,11 +31,14 @@ class _cart_screenState extends State<cart_screen> {
               TextFieldTapRegion(
                 child: Row(
                   children: [
-                    Icon(CupertinoIcons.person),
+                    Icon(CupertinoIcons.person, color: Colors.black26),
                     SizedBox(
                       width: 15,
                     ),
-                    Text("Name"),
+                    Text("Name",
+                        style: TextStyle(
+                            color: Colors.black26,
+                            fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -37,12 +46,54 @@ class _cart_screenState extends State<cart_screen> {
               TextFieldTapRegion(
                 child: Row(
                   children: [
-                    Icon(CupertinoIcons.person),
+                    Icon(
+                      CupertinoIcons.mail_solid,
+                      color: Colors.black26,
+                    ),
                     SizedBox(
                       width: 15,
                     ),
-                    Text("E-mail"),
+                    Text("E-mail",
+                        style: TextStyle(
+                            color: Colors.black26,
+                            fontWeight: FontWeight.bold)),
                   ],
+                ),
+              ),
+              Divider(),
+              TextFieldTapRegion(
+                child: Row(
+                  children: [
+                    Icon(CupertinoIcons.location_solid, color: Colors.black26),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text("Location",
+                        style: TextStyle(
+                            color: Colors.black26,
+                            fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+              Divider(),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                child: CupertinoTextField.borderless(
+                  prefix: Icon(
+                    CupertinoIcons.time,
+                    color: Colors.black38,
+                  ),
+                  placeholder: "Delivery Time",
+                  suffix: Text(
+                      " ${Picprovider!.dateTime.day}-${Picprovider!.dateTime.month}-${Picprovider!.dateTime.year} ${Picprovider!.dateTime.hour}:${Picprovider!.dateTime.minute} "),
+                ),
+              ),
+              SizedBox(
+                height: 200,
+                child: CupertinoDatePicker(
+                  onDateTimeChanged: (value) {
+                    Picprovider!.changedate(value);
+                  },
                 ),
               ),
             ],

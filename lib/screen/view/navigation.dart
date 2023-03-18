@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:product/screen/provider/navigationprovider.dart';
 import 'package:product/screen/view/screen1.dart';
 import 'package:product/screen/view/screen2.dart';
+import 'package:product/screen/view/screen3.dart';
 import 'package:provider/provider.dart';
 
 class navigation extends StatefulWidget {
@@ -16,6 +17,7 @@ class _navigationState extends State<navigation> {
   List screen = [
     firstPage(),
    secondPage(),
+    cart_screen(),
   ];
   @override
   Widget build(BuildContext context) {
